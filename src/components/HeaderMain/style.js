@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Header = styled.header `
     background-color: var(--color-first);
     height: 50px;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
 `;
