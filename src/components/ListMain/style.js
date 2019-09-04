@@ -1,16 +1,8 @@
 import styled from 'styled-components';
 
-export const List = styled.div`
-    display: flex;
-`;
-
-export const Content = styled.div`
-    margin: 10px auto;
-    color: #808080;
-`;
-
 export const Title = styled.h2`
     text-transform: uppercase;
+    color: var(--color-font);
 `;
 
 export const Apply = styled.button`
@@ -29,6 +21,7 @@ export const Detail = styled.p`
     font-size: 10px;
     min-width: 400px;
     margin-top: 10px;
+    color: var(--color-font);
 `;
 
 export const Spacing = styled.div`

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
-import { List, Content, Detail, Title, Apply, Spacing } from './style';
-import ApiService from '../../tools/ApiService';
+import { Detail, Title, Apply, Spacing } from './style';
+
+import ApiService from '../../tools/ServicesConfig/ApiService';
 import LinkWrapper from '../../tools/LinkWrapper';
 
 class ListMain extends Component {
@@ -22,18 +23,17 @@ class ListMain extends Component {
 
     render() {
         const { nurse } = this.state;
-        
 
         const lines = nurse.map((line, index) => {
             return (
-                <List key={index}>
-                    <Content>
+                <article className="content">
+                    <div className="wrapper" key={index}>
                         <Title>{line.name}</Title>
                         <Apply> <LinkWrapper to={`/detail/${line._id}`}>Apply</LinkWrapper></Apply>
                         <Detail>{line.proffession}</Detail>
                         <Spacing />
-                    </Content>
-                </List>
+                    </div>
+                </article>
             );
         })
 
