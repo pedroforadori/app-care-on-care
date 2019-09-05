@@ -26,8 +26,8 @@ class ListMain extends Component {
 
         const lines = nurse.map((line, index) => {
             return (
-                <article className="content">
-                    <div className="wrapper" key={index}>
+                <article className="content" key={index}>
+                    <div className="wrapper">
                         <Title>{line.name}</Title>
                         <Apply> <LinkWrapper to={`/detail/${line._id}`}>Apply</LinkWrapper></Apply>
                         <Detail>{line.proffession}</Detail>

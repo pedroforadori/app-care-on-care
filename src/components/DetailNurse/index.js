@@ -5,6 +5,7 @@ import { NameNurse, Box, AlignText, AlignTitle } from './style';
 
 import ApiService from '../../tools/ServicesConfig/ApiService';
 import { Spacing } from '../ListMain/style';
+import ButtonContact from '../ButtonContact';
 
 class DetailNurse extends Component {
     constructor() {
@@ -55,6 +56,7 @@ class DetailNurse extends Component {
                             <AlignText>{nurse.length ? nurse[0].email : ""}</AlignText>
                             <AlignTitle>Descrição: </AlignTitle>
                             <AlignText>{nurse.length ? nurse[0].email : ""}</AlignText>
+                            <ButtonContact></ButtonContact>
                         </Box>
                     </div>
                 </article>
