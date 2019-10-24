@@ -24,17 +24,24 @@ class ListMain extends Component {
     render() {
         const { nurse } = this.state;
 
-        const lines = nurse.map((line, index) => {
-            return (
-                <Card className="content" key={index}>
-                    <Title>{line.name}</Title>
-                    <LinkWrapper className="button" to={`/detail/${line._id}`}>Apply</LinkWrapper>
-                    <Detail>{line.proffession}</Detail>
-                </Card>
-            );
-        })
+        return(
+            <div className="wrapper">
+                {
+                    nurse.map((line, index) => {
+                        return (
+                            <Card className="content" key={index}>
+                                <Title>{line.name}</Title>
+                                <LinkWrapper className="button link" to={`/detail/${line._id}`}>Apply</LinkWrapper>
+                                <Detail>{line.proffession}</Detail>
+                            </Card>
+                        );
+                    })
+                } 
+            </div>
+        )
 
-        return lines;
+
+
     }
 }
 
