@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Detail, Title, Apply, Spacing } from './style';
+import { Detail, Title, Card } from './style';
 
 import ApiService from '../../tools/ServicesConfig/ApiService';
 import LinkWrapper from '../../tools/LinkWrapper';
@@ -26,14 +26,11 @@ class ListMain extends Component {
 
         const lines = nurse.map((line, index) => {
             return (
-                <article className="content" key={index}>
-                    <div className="wrapper">
-                        <Title>{line.name}</Title>
-                        <Apply> <LinkWrapper to={`/detail/${line._id}`}>Apply</LinkWrapper></Apply>
-                        <Detail>{line.proffession}</Detail>
-                        <Spacing />
-                    </div>
-                </article>
+                <Card className="content" key={index}>
+                    <Title>{line.name}</Title>
+                    <LinkWrapper className="button" to={`/detail/${line._id}`}>Apply</LinkWrapper>
+                    <Detail>{line.proffession}</Detail>
+                </Card>
             );
         })
 

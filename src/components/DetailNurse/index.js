@@ -4,7 +4,6 @@ import HeaderMain from '../HeaderMain';
 import { NameNurse, Box, AlignText, AlignTitle } from './style';
 
 import ApiService from '../../tools/ServicesConfig/ApiService';
-import { Spacing } from '../ListMain/style';
 import ButtonContact from '../ButtonContact';
 
 class DetailNurse extends Component {
@@ -35,7 +34,6 @@ class DetailNurse extends Component {
                     <div className="wrapper">
                         <Box>
                             <NameNurse>{nurse.length ? nurse[0].name : ""}</NameNurse>
-                            <Spacing />
                             <AlignTitle>Especialidade: </AlignTitle>
                             <AlignText>{nurse.length ? nurse[0].proffession : ""}</AlignText>
                             <AlignTitle>CPF: </AlignTitle>
