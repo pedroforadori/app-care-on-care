@@ -11,7 +11,6 @@ import { Detail, Title, Card } from './style';
 
 
 
-
 const ListMain = () => {
     
     const { appState, setState } = useContext(AppContext)
@@ -20,7 +19,7 @@ const ListMain = () => {
     useEffect(() => {
         ApiService.ListNurse()
             .then(res => setState({ ...appState, nurseList: [...res] }))
-    }, [nurseList])
+    }, [appState, setState])
 
     return(
         <>
@@ -31,7 +30,7 @@ const ListMain = () => {
                 return (
                     <Card className="content" key={index}>
                     <Title>{line.name}</Title>
-                    <LinkWrapper className="button link" to={`/detail/${line._id}`}>Apply</LinkWrapper>
+                    <LinkWrapper className="button link" to={`/detail/${line._id}`}>Ver detalhes</LinkWrapper>
                     <Detail>{line.proffession}</Detail>
                     </Card>
                 );

@@ -15,9 +15,10 @@ export const Card = styled.article`
         background-color: var(--color-highlight);
         /* text-transform: uppercase; */
         color: #fff;
+        font-family: 'Poppins',sans-serif;
         font-weight: 600;
         letter-spacing: 2px;
-        font-size: 1.25em;
+        font-size: 1.15em;
         border-radius: 3px;
         text-decoration: none;
         padding: 10px 15px;
@@ -36,6 +37,8 @@ export const Title = styled.h2`
     font-size: 1.4em;
     letter-spacing: 2px;
     font-weight: 600;
+    font-family: 'Poppins',sans-serif;
+
 `;
 
 

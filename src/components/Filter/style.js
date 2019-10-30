@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const FilterWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr .5fr;
+  grid-template-columns: 1fr .5fr .5fr .25fr;
   grid-auto-rows: 50px;
   grid-gap: 20px;
   margin: 40px auto 80px;
@@ -14,6 +14,7 @@ const FilterWrapper = styled.div`
       appearance: none;
       background: none;
       border-radius: 0;
+      /* outline: none; */
       border-top: none;
       border-right: none;
       border-left: none;
@@ -26,8 +27,15 @@ const FilterWrapper = styled.div`
       color: #888;
       letter-spacing: 1px;
       width: 100%;
+      transition: border-color .25s .15s, color .25s .15s;
+
 
       &[disabled] { cursor: not-allowed; }
+      
+      &[data-selected="true"]{
+        color: var(--color-highlight);
+        border-color: var(--color-highlight);
+      }
     }
 
     &[data-fetching="true"]::before {
@@ -45,6 +53,8 @@ const FilterWrapper = styled.div`
       border-right: 2px solid transparent;
       animation: spinner .45s linear infinite;
     }
+
+
     
   }
 `
@@ -60,6 +70,11 @@ const FilterButton = styled.button`
   /* padding: 0 15px; */
   cursor: pointer;
   letter-spacing: 1px;
+
+  &[disabled] {
+    color: #ccc;
+    cursor: not-allowed;
+  }
 `
 
 export {

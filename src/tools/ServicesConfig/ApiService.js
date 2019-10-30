@@ -27,17 +27,19 @@ const ApiService = {
             .then(res => res.nurse)
     },
     ListStates: () => {
-        return fetch(`${API.url}/nurse/states`)
+        // return fetch(`${API.url}/nurse/states`)
+        return fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados`)
             .then(res => res.json())
-            .then(res => res.nurse)
     },
-    ListCities: () => {
-        return fetch(`${API.url}/nurse/cities`)
+    ListCities: stateId => {
+        // return fetch(`${API.url}/nurse/cities/${stateId}`)
+        return fetch(`http://servicodados.ibge.gov.br/api/v1/localidades/estados/${stateId}/municipios`)
             .then(res => res.json())
-            .then(res => res.nurse)
     },
-    Find: query => {
-        return fetch(`${API.url}/search?${query}`)
+    FindNurse: query => {
+        // return fetch(`${API.url}/search?${query}`)
+        debugger
+        return fetch(`${API.url}/nurse`)
             .then(res => res.json())
             .then(res => res.nurse)
     }

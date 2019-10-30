@@ -11,49 +11,83 @@ const Filter = () => {
 
   const [specialities, loadSpecialities] = useState([])
   const [states, loadStates] = useState([])
-  const [city, loadCities] = useState([])
+  const [cities, loadCities] = useState([])
 
-  const [selectedState, selectState] = useState(null)
+  const [selectedSpecialty, selectSpeciality] = useState("0")
+  const [selectedState, selectState] = useState("0")
+  const [selectedCity, selectCity] = useState("0")
   
-
-  const filterResults = () => {
-    setState({ ...appState, nurseList: [] })
-    
-      ApiService.ListNurse()
-        .then(res => setState({ ...appState, nurseList: [...res] }))
-  }
-
   useEffect(() => {
     ApiService.ListSpecialities().then(loadSpecialities)
-    // ApiService.ListStates().then(loadStates)
-    // ApiService.ListCities().then(loadCities)
-  })
+    ApiService.ListStates().then(loadStates)
+  }, [])
+
+  const clearResults = () => setState({ ...appState, nurseList: [] })
+
+  const onSelectState = stateId => {
+    selectState(stateId)
+    
+    if(stateId === '0') {
+      return loadCities([])  
+    }
+
+    ApiService.ListCities(stateId).then(loadCities)
+  }
+  
+  const onFilterResults = () => {
+    clearResults()
+    
+    const query = `speciality=${selectedSpecialty}&state=${selectedState}&city=${selectedCity}`
+
+    ApiService.FindNurse(query)
+      .then(res => setState({ ...appState, nurseList: [...res] }))
+  }
   
 
   return(
     <FilterWrapper>
+
       <div className="filter" data-fetching={!specialities.length}>
-        <select>
+        <select 
+          onChange={ ({ target }) => selectSpeciality(target.value) }>
           <option disabled={specialities.length}>Especialidade</option>
+          <option value="0">Todas as especialidades</option>
           {
-            specialities.map(s => <option key={s._id}>{s.description}</option>)
+            specialities.map(s => <option key={s._id} value={s._id}>{s.description}</option>)
           }
         </select>
       </div>
+
       <div className="filter" data-fetching={!states.length}>
-        <select onChange={ ({ target }) => selectState(target.value) }>
+        <select 
+          disabled={!states.length} 
+          onChange={ ({ target }) => onSelectState(target.value) }>
           <option disabled={states.length} >Estado</option>
-          {/* {
-            specialities.map(s => <option key={s._id} value={s._id}>{s.description}</option>)
-          } */}
+          <option value="0">Todos os estados</option>
+          {
+            states.map(s => <option key={s.id} value={s.id}>{s.nome}</option>)
+          }
         </select>
       </div>
+
       <div className="filter">
-        <select disabled>
-          <option>Cidade</option>
+        <select 
+          onChange={ ({ target }) => selectCity(target.value) } 
+          data-fetching={selectedState && !cities.length}>
+          <option disabled={cities.length}>Cidade</option>
+          <option value="0">Todos as cidades</option>
+          {
+            cities.map(s => <option key={s.id} value={s.id}>{s.nome}</option>)
+          }
         </select>
       </div>
-      <FilterButton className="button" onClick={() => filterResults()}>Buscar</FilterButton>
+
+      <FilterButton 
+        className="button"
+        disabled={!selectSpeciality}
+        onClick={() => onFilterResults()}>
+        Buscar
+      </FilterButton>
     </FilterWrapper>
   )
 }
