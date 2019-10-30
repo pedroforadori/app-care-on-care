@@ -1,16 +1,10 @@
 import styled from 'styled-components';
 
 export const Card = styled.article`
-    width: 100%;
-    padding: 25px;
-    margin: 30px auto;
-    border-radius: 4px;
-    background-color: #fff;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    box-shadow: -5px 5px 5px -5px rgba(0, 0, 0, .25);
-    
+
     .button {
         background-color: var(--color-highlight);
         /* text-transform: uppercase; */
@@ -38,7 +32,6 @@ export const Title = styled.h2`
     letter-spacing: 2px;
     font-weight: 600;
     font-family: 'Poppins',sans-serif;
-
 `;
 
 

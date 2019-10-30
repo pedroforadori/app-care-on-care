@@ -5,7 +5,7 @@ const LoaderWrapper = styled.div`
   width: 100%;
   height: 100%;
   max-height: 100px;
-  margin-top: 150px;
+  margin: 100px auto;
 
   &:before {
       content: '';

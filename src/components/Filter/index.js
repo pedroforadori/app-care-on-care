@@ -37,7 +37,7 @@ const Filter = () => {
   const onFilterResults = () => {
     clearResults()
     
-    const query = `speciality=${selectedSpecialty}&state=${selectedState}&city=${selectedCity}`
+    const query = `specialtyProffesion=${selectedSpecialty}&state=${selectedState}&city=${selectedCity}`
 
     ApiService.FindNurse(query)
       .then(res => setState({ ...appState, nurseList: [...res] }))

@@ -19,24 +19,24 @@ const ListMain = () => {
     useEffect(() => {
         ApiService.ListNurse()
             .then(res => setState({ ...appState, nurseList: [...res] }))
-    }, [appState, setState])
+    }, [])
 
     return(
         <>
-        <Filter />
-        {
-            nurseList.length 
-            ? nurseList.map((line, index) => {
-                return (
-                    <Card className="content" key={index}>
-                    <Title>{line.name}</Title>
-                    <LinkWrapper className="button link" to={`/detail/${line._id}`}>Ver detalhes</LinkWrapper>
-                    <Detail>{line.proffession}</Detail>
-                    </Card>
-                );
-            })
-            : <Loader />
-        } 
+            <Filter />
+            {
+                nurseList.length 
+                ? nurseList.map((line, index) => {
+                    return (
+                        <Card className="content card" key={index}>
+                        <Title>{line.name}</Title>
+                        <LinkWrapper className="button link" to={`/detail/${line._id}`}>Ver detalhes</LinkWrapper>
+                        <Detail>{line.proffession}</Detail>
+                        </Card>
+                    );
+                })
+                : <Loader />
+            } 
         </>       
     )
 }

@@ -18,8 +18,9 @@ const ApiService = {
     },
     //getbyid
     ListNurseById: id => {
-        return fetch(`${API.url}/nurse/${id}`)
+        return fetch(`${API.url}/nurse/partner/${id}`)
             .then(res => res.json())
+            .then(res => res.nurse)
     },
     ListSpecialities: () => {
         return fetch(`${API.url}/nurse/specialty`)
@@ -37,7 +38,7 @@ const ApiService = {
             .then(res => res.json())
     },
     FindNurse: query => {
-        // return fetch(`${API.url}/search?${query}`)
+        // return fetch(`${API.url}/filter?${query}`)
         debugger
         return fetch(`${API.url}/nurse`)
             .then(res => res.json())

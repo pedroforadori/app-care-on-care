@@ -1,21 +1,80 @@
 import styled from 'styled-components';
 
-export const NameNurse = styled.h1`
+
+const Title = styled.h2`
     text-transform: uppercase;
+    color: var(--color-highlight);
+    font-size: 1.5em;
+    letter-spacing: 2px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
 `;
 
-export const Box = styled.section`
-    text-align: left;
-    color: var(--color-font);
-`;
+const CardHeader = styled.div`
+    display: flex;
+    align-items: center;
+`
 
-export const AlignText = styled.p`
-    margin-bottom: 25px;
-    font-size: 12px;
-`;
+const Subtitle = styled.h3`
 
-export const AlignTitle = styled.p`
-    margin-bottom: 5px;
-    font-size: 12px;
-    font-weight: 700;
-`;
+`
+
+const Description = styled.p`
+    margin: 40px 0;
+    color: #888;
+`
+
+const List = styled.dl`
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 15px 2px;
+    margin-top: 50px;
+`
+
+const ListTitle = styled.dt`
+    color: #666;
+`
+
+const ListItem = styled.dd`
+    font-weight: 600;
+`
+
+const Tag = styled.span`
+    background: #ccc;
+    padding: 5px 15px;
+    border-radius: 15px;
+    display: inline-block;
+    margin: 0 15px;
+    letter-spacing: 1px;
+    font-size: .95em;
+`
+
+const CardFooter = styled.div`
+    text-align: center;
+    margin-top: 60px;
+
+    .button { 
+        font-size: 1.15em;
+        font-family: 'Poppins',sans-serif;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--color-highlight);
+        border-radius: 10px;
+        cursor: pointer;
+        -webkit-letter-spacing: 1px;
+        -moz-letter-spacing: 1px;
+        -ms-letter-spacing: 1px;
+        letter-spacing: 1px;
+    }
+`
+
+export {
+    Title,
+    Tag,
+    CardHeader,
+    CardFooter,
+    Description,
+    List,
+    ListTitle,
+    ListItem
+}
