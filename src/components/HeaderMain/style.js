@@ -3,6 +3,9 @@ import styled from 'styled-components';
 export const Header = styled.header `
     background-color: var(--color-first);
     padding: 10px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 `;
 
 export const LogoImgStyle = styled.img `
