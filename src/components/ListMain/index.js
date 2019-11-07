@@ -1,44 +1,44 @@
-import React, { Component } from 'react';
+import React, { useEffect, useContext } from 'react';
 
-import { List, Content, Detail, Title, Apply, Spacing } from './style';
-import ApiService from '../../tools/ApiService';
+import { AppContext } from '../AppContext';
+
+import ApiService from '../../tools/ServicesConfig/ApiService';
 import LinkWrapper from '../../tools/LinkWrapper';
+import Filter from '../Filter/index';
+import Loader from '../Loader/index';
 
-class ListMain extends Component {
-    constructor() {
-        super();
+import { Detail, Title, Card } from './style';
 
-        this.state = {
-            nurse: []
-        }
-    }
 
-    componentDidMount() {
+
+const ListMain = () => {
+    
+    const { appState, setState } = useContext(AppContext)
+    const { nurseList } = appState
+
+    useEffect(() => {
         ApiService.ListNurse()
-            .then(res => {
-                this.setState({ nurse: [...this.state.nurse, ...res.nurse] })
-            });
-    }
+            .then(res => setState({ ...appState, nurseList: [...res] }))
+    }, [appState, setState])
 
-    render() {
-        const { nurse } = this.state;
-        
-
-        const lines = nurse.map((line, index) => {
-            return (
-                <List key={index}>
-                    <Content>
-                        <Title>{line.name}</Title>
-                        <Apply> <LinkWrapper to={`/detail/${line._id}`}>Apply</LinkWrapper></Apply>
-                        <Detail>{line.proffession}</Detail>
-                        <Spacing />
-                    </Content>
-                </List>
-            );
-        })
-
-        return lines;
-    }
+    return(
+        <>
+        <Filter />
+        {
+            nurseList.length 
+            ? nurseList.map((line, index) => {
+                return (
+                    <Card className="content" key={index}>
+                    <Title>{line.name}</Title>
+                    <LinkWrapper className="button link" to={`/detail/${line._id}`}>Ver detalhes</LinkWrapper>
+                    <Detail>{line.proffession}</Detail>
+                    </Card>
+                );
+            })
+            : <Loader />
+        } 
+        </>       
+    )
 }
-
+        
 export default ListMain;

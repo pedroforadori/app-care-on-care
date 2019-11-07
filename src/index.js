@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './styles/settings/colors.css';
+import './styles/tools/fonts.css';
 import './styles/generic/reset.css';
+import './styles/generic/content.css';
 
 import App from './App';
 
@@ -15,7 +17,7 @@ ReactDOM.render(
     <BrowserRouter>
         <Switch>
             <Route path="/" exact={true} component={App} />
-            <Route path="/detail/" component={DetailNurse}/>
+            <Route path="/detail/:id" component={DetailNurse}/>
         </Switch>
     </BrowserRouter>, document.getElementById('root'));
 

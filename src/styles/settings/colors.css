@@ -1,4 +1,5 @@
 :root {
-    /* --color-first: #282c34; */
-    --color-first: #333;
+    --color-first: #282c34;
+    --color-font: #808080;
+    --color-highlight: #007bff;
 }
