@@ -9,7 +9,7 @@ import {
   ModalFooter } from './style'
 
 
-const Login = ({ opened, close }) => {
+const LoginModal = ({ opened, close }) => {
 
   return(
     <ModalWrapper opened={opened} >
@@ -26,4 +26,4 @@ const Login = ({ opened, close }) => {
 
 }
 
-export default Login
+export default LoginModal
